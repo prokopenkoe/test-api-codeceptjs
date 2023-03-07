@@ -1,0 +1,32 @@
+{
+    "name": "codeceptjs-tests",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "step1.parseSwagger": "codeceptjs run utils/step1.parseApiFromSwagger.js",
+        "step2.createTestFiles": "node utils/step2.createTestFiles.js",
+        "step3.createJsonschemaFiles": "node utils/step3.createJsonschemaFiles.js",
+        "codeceptjs": "codeceptjs run",
+        "examples:good": "codeceptjs run --steps -c examples/codecept.good.conf.js",
+        "examples:errors": "codeceptjs run --steps -c examples/codecept.errors.conf.js",
+        
+        "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
+        "codeceptjs:ui": "codecept-ui --app",
+        "codeceptjs:demo": "codeceptjs run --steps -c node_modules/@codeceptjs/examples",
+        "codeceptjs:demo:headless": "HEADLESS=true codeceptjs run --steps -c node_modules/@codeceptjs/examples",
+        "codeceptjs:demo:ui": "codecept-ui --app  -c node_modules/@codeceptjs/examples"
+    },
+    "devDependencies": {
+        "@codeceptjs/configure": "^0.10.0",
+        "@codeceptjs/examples": "^1.2.1",
+        "@codeceptjs/ui": "^0.5.0",
+        "codeceptjs": "^3.4.1",
+        "playwright": "^1.31.2",
+        "puppeteer": "^19.7.2"
+    },
+    "dependencies": {
+        "exceljs": "^4.3.0",
+        "json5": "^2.2.3",
+        "tv4": "^1.3.0"
+    }
+}
