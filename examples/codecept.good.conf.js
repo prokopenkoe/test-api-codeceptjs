@@ -29,4 +29,9 @@ exports.config = {
     },
 
   },
+  plugins: {
+    screenshotOnFail: {
+      enabled: false
+    }
+  }
 }

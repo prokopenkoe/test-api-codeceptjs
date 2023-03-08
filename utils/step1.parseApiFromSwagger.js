@@ -22,7 +22,7 @@ Scenario('Парсер всех методов из сваггера', async({ I
     let allApiMethods =  await I.executeScript(function() {
         
         // Указываем локатор, подходящий для всех методов
-        locator_allApiMethods = "span.opblock-summary-method"
+        let locator_allApiMethods = "span.opblock-summary-method"
         
         let apiMethods=[]; 
         const methods = Array.prototype.slice.call(document.querySelectorAll(locator_allApiMethods)); 
@@ -35,7 +35,7 @@ Scenario('Парсер всех методов из сваггера', async({ I
     let allApiNames =  await I.executeScript(function() {
         
         // Указываем локатор, подходящий для всех названий методов
-        locator_allApiNames = "button.opblock-summary-control > span:nth-child(2)"
+        let locator_allApiNames = "button.opblock-summary-control > span:nth-child(2)"
         
         let Names=[]; 
         const paths = Array.prototype.slice.call(document.querySelectorAll(locator_allApiNames)); 
@@ -48,7 +48,7 @@ Scenario('Парсер всех методов из сваггера', async({ I
     let allApiDescriptions = await I.executeScript(function() {
         
         // Указываем локатор, подходящий для всех описаний методов
-        locator_allApiDescriptions = "div.opblock-summary-description"
+        let locator_allApiDescriptions = "div.opblock-summary-description"
         
         let Descriptions=[]; 
         const Descrs = Array.prototype.slice.call(document.querySelectorAll(locator_allApiDescriptions)); 
@@ -57,7 +57,7 @@ Scenario('Парсер всех методов из сваггера', async({ I
             return Descriptions
         });
     
-    // Соотносим между собой данные из всех трех предыдущих массивов, дописываем к ним директорию, в которой лежат методы
+    // Соотносим между собой данные из всех трех предыдущих массивов, дописываем к ним директории, в которой лежат методы
     // и сохраняем в виде таблицы
     for (let i=0; i<allApiNames.length; i++) {
         let apiDirectory = await I.grabTextFrom(`//a[contains(., "${allApiNames[i]}")]/../../../../../../../../h3/a/span`)

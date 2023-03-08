@@ -3,6 +3,7 @@ const JSON5 = require('json5');
 const axios = require('axios');
 var tv4 = require('tv4');
 const assert = require('assert');
+const { config } = require('codeceptjs');
 
 let folders = fs.readdirSync('./sandbox');
 let allFileTests = [];
@@ -31,14 +32,11 @@ async function createJsonSchemaForTest(allFileTests, allFileSchemas) {
         
         reguestData = currentTest.match(/(requestData =)\s+(.*)\s+const/s)[2]
         axiosOptionsForBook = JSON5.parse(reguestData);
-        axiosOptionsForBook['baseURL'] = 'https://petstore.swagger.io/v2'
-        axiosOptionsForBook['timeout'] = '20000'
-        
+        axiosOptionsForBook['baseURL'] = config.get().BaseUrl,
         
         responseFromBook = await axios.request(axiosOptionsForBook)
         
         let docString = JSON.stringify(responseFromBook.data);
-        console.log(docString)
         
         const optionsForJsonSchema = {
             method: 'POST',
