@@ -60,7 +60,11 @@ Scenario('Парсер всех методов из сваггера', async({ I
     // Соотносим между собой данные из всех трех предыдущих массивов, дописываем к ним директории, в которой лежат методы
     // и сохраняем в виде таблицы
     for (let i=0; i<allApiNames.length; i++) {
-        let apiDirectory = await I.grabTextFrom(`//a[contains(., "${allApiNames[i]}")]/../../../../../../../../h3/a/span`)
+        
+        // Указываем локатор, подходящий для названия директорий, в которых находятся методы
+        let locator_apiDirectory = `//a[contains(., "${allApiNames[i]}")]/../../../../../../../../h3/a/span`
+        
+        let apiDirectory = await I.grabTextFrom(locator_apiDirectory)
         worksheet.addRow({
             directory: apiDirectory, 
             method: allApiMethods[i], 
